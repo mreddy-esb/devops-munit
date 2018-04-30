@@ -182,13 +182,14 @@
 
 	<distributionManagement>
 		<repository>
-			<id>LocalReleases</id>
-			<!-- nexus -->
-			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>http://localhost:8081/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>LocalSnapshots</id>
-			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+			<id>snapshots</id>
+			<name>Snapshots</name>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -349,6 +350,9 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	
+	
 
 	<repositories>
 		<repository>
