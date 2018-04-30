@@ -46,8 +46,6 @@
 		<arm.environment>Sandbox</arm.environment>
 		<build.number>0</build.number>
 
-
-
 	</properties>
 
 	<build>
