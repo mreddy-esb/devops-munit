@@ -7,11 +7,8 @@
 		<version>1.0.0</version> </parent> -->
 
 
-	<!-- <parent>
-		<groupId>com.mycompany</groupId>
-		<artifactId>mule-maven-parent-pom1</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent> -->
+	<!-- <parent> <groupId>com.mycompany</groupId> <artifactId>mule-maven-parent-pom1</artifactId> 
+		<version>0.0.1-SNAPSHOT</version> </parent> -->
 
 
 
@@ -33,8 +30,8 @@
 		<mule.tools.version>1.2</mule.tools.version>
 		<munit.version>1.3.7</munit.version>
 		<mule.munit.support.version>3.9.1</mule.munit.support.version>
-		
-	
+
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<mule.version>3.9.0</mule.version>
@@ -50,9 +47,9 @@
 		<arm.target.type>server</arm.target.type>
 		<arm.environment>Sandbox</arm.environment>
 		<build.number>0</build.number>
-		
-		
-		
+
+
+
 	</properties>
 
 	<build>
@@ -144,6 +141,34 @@
 
 
 
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<deploymentType>arm</deploymentType>
+					<username>mreddy-esb</username>
+					<password>Ritdumdig1</password>
+					<!-- <businessGroup>${anypoint.businessGroup}</businessGroup> -->
+					<uri>${anypoint.uri}</uri>
+					<target>${arm.target.name}</target>
+					<!-- One of: server, serverGroup, cluster -->
+					<targetType>${arm.target.type}</targetType>
+					<environment>${arm.environment}</environment>
+				</configuration>
+				<executions>
+					<execution>
+						<id>deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+
 
 
 		</plugins>
@@ -156,22 +181,22 @@
 			</testResource>
 		</testResources>
 	</build>
-	
+
 	<distributionManagement>
-        <repository>
-            <id>LocalReleases</id>
-            <!-- nexus -->
-            <url>http://localhost:8081/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>LocalSnapshots</id>
-            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-	
-	
+		<repository>
+			<id>LocalReleases</id>
+			<!-- nexus -->
+			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>LocalSnapshots</id>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
 	<profiles>
-		
+
 		<profile>
 			<id>arm</id>
 			<build>
@@ -205,11 +230,11 @@
 			</build>
 		</profile>
 	</profiles>
-	
-	
-	
-	
-	
+
+
+
+
+
 
 	<!-- Mule Dependencies -->
 	<dependencies>
