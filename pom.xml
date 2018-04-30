@@ -52,6 +52,14 @@
 
 	<build>
 		<plugins>
+
+			<plugin>
+				<groupId>org.mule.tools</groupId>
+				<artifactId>muleesb-maven-plugin</artifactId>
+				<version>1.0</version>
+			</plugin>
+
+
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
@@ -137,31 +145,13 @@
 
 
 
-			<!-- <plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>2.0</version>
-				<configuration>
-					<deploymentType>arm</deploymentType>
-					<username>mreddy-esb</username>
-					<password>Ritdumdig1</password>
-					<businessGroup>${anypoint.businessGroup}</businessGroup>
-					<uri>${anypoint.uri}</uri>
-					<target>${arm.target.name}</target>
-					One of: server, serverGroup, cluster
-					<targetType>${arm.target.type}</targetType>
-					<environment>${arm.environment}</environment>
-				</configuration>
-				<executions>
-					<execution>
-						<id>deploy</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin> -->
+			<!-- <plugin> <groupId>org.mule.tools.maven</groupId> <artifactId>mule-maven-plugin</artifactId> 
+				<version>2.0</version> <configuration> <deploymentType>arm</deploymentType> 
+				<username>mreddy-esb</username> <password>Ritdumdig1</password> <businessGroup>${anypoint.businessGroup}</businessGroup> 
+				<uri>${anypoint.uri}</uri> <target>${arm.target.name}</target> One of: server, 
+				serverGroup, cluster <targetType>${arm.target.type}</targetType> <environment>${arm.environment}</environment> 
+				</configuration> <executions> <execution> <id>deploy</id> <phase>deploy</phase> 
+				<goals> <goal>deploy</goal> </goals> </execution> </executions> </plugin> -->
 
 
 
@@ -179,76 +169,58 @@
 	</build>
 
 	<distributionManagement>
+
 		<repository>
 			<id>releases</id>
 			<name>Releases</name>
 			<url>http://localhost:8081/nexus/content/repositories/releases</url>
 		</repository>
+
+
+
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>Snapshots</name>
 			<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
+
 	</distributionManagement>
 
 
 	<profiles>
 
-		<!-- <profile>
-			<id>arm</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.mule.tools.maven</groupId>
-						<artifactId>mule-maven-plugin</artifactId>
-						<version>2.2.1</version>
-						<configuration>
-							<deploymentType>arm</deploymentType>
-							<username>mreddy-esb</username>
-							<password>Ritdumdig1</password>
-							<businessGroup>${anypoint.businessGroup}</businessGroup>
-							<uri>${anypoint.uri}</uri>
-							<target>${arm.target.name}</target>
-							One of: server, serverGroup, cluster
-							<targetType>${arm.target.type}</targetType>
-							<environment>${arm.environment}</environment>
-						</configuration>
-						<executions>
-							<execution>
-								<id>deploy</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile> -->
-		
-		
+		<!-- <profile> <id>arm</id> <build> <plugins> <plugin> <groupId>org.mule.tools.maven</groupId> 
+			<artifactId>mule-maven-plugin</artifactId> <version>2.2.1</version> <configuration> 
+			<deploymentType>arm</deploymentType> <username>mreddy-esb</username> <password>Ritdumdig1</password> 
+			<businessGroup>${anypoint.businessGroup}</businessGroup> <uri>${anypoint.uri}</uri> 
+			<target>${arm.target.name}</target> One of: server, serverGroup, cluster 
+			<targetType>${arm.target.type}</targetType> <environment>${arm.environment}</environment> 
+			</configuration> <executions> <execution> <id>deploy</id> <phase>deploy</phase> 
+			<goals> <goal>deploy</goal> </goals> </execution> </executions> </plugin> 
+			</plugins> </build> </profile> -->
+
+
 		<profile>
-            <id>Sandbox</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-                <property>
-                    <name>env</name>
-                    <value>Sandbox</value>
-                </property>
-            </activation>
-            <properties>
-                <environment>Sandbox</environment>
-                <target>myLocalServer</target>
-                <targetType>server</targetType>
-            </properties>
-        </profile>
-		
-		
-		
-		
-		
-		
+			<id>Sandbox</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>Sandbox</value>
+				</property>
+			</activation>
+			<properties>
+				<environment>Sandbox</environment>
+				<target>myLocalServer</target>
+				<targetType>server</targetType>
+			</properties>
+		</profile>
+
+
+
+
+
+
 	</profiles>
 
 
@@ -348,11 +320,29 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
-	
-	
+
+
+
 
 	<repositories>
+
+		<repository>
+			<id>thirdparty</id>
+			<name>3rd party</name>
+			<url>http://localhost:8081/nexus/content/repositories/thirdparty</url>
+		</repository>
+
+
+
+		<repository>
+			<id>Nexus</id>
+			<name>Nexus Public Repository</name>
+			<url>https://repository-master.mulesoft.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+		</repository>
+
+
+
 		<repository>
 			<id>Central</id>
 			<name>Central</name>
@@ -367,6 +357,15 @@
 		</repository>
 	</repositories>
 	<pluginRepositories>
+
+		<pluginRepository>
+			<id>Nexus</id>
+			<name>Nexus Public Repository</name>
+			<url>https://repository-master.mulesoft.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+		</pluginRepository>
+
+
 		<pluginRepository>
 			<id>mulesoft-release</id>
 			<name>mulesoft release repository</name>
@@ -376,6 +375,17 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
+
+		<pluginRepository>
+			<id>mule-ee-public</id>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+
+
+
 	</pluginRepositories>
 
 </project>
