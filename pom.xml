@@ -16,7 +16,7 @@
 	<groupId>com.mycompany</groupId>
 	<artifactId>devops-munit</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>mule</packaging>
+	<packaging>jar</packaging>
 	<name>Mule munit Application</name>
 
 
@@ -34,7 +34,7 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<mule.version>3.9.0</mule.version>
+		<mule.version>4.1.1</mule.version>
 		<mule.tools.version>1.2</mule.tools.version>
 		<!-- <mule.home>${MULE_HOME}</mule.home> -->
 		<mule.runtime.community>true</mule.runtime.community>
@@ -119,8 +119,8 @@
 				<version>2.0</version>
 				<configuration>
 					<deploymentType>cloudhub</deploymentType>
-					<!-- muleVersion is the runtime version as it appears on the CloudHub 
-						interface -->
+					muleVersion is the runtime version as it appears on the CloudHub 
+						interface
 					<muleVersion>3.9.0</muleVersion>
 					<username>mreddy-esb</username>
 					<password>Ritdumdig1</password>
@@ -141,18 +141,18 @@
 
 
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>2.2.1</version>
+				<version>2.0</version>
 				<configuration>
 					<deploymentType>arm</deploymentType>
 					<username>mreddy-esb</username>
 					<password>Ritdumdig1</password>
-					<!-- <businessGroup>${anypoint.businessGroup}</businessGroup> -->
+					<businessGroup>${anypoint.businessGroup}</businessGroup>
 					<uri>${anypoint.uri}</uri>
 					<target>${arm.target.name}</target>
-					<!-- One of: server, serverGroup, cluster -->
+					One of: server, serverGroup, cluster
 					<targetType>${arm.target.type}</targetType>
 					<environment>${arm.environment}</environment>
 				</configuration>
@@ -165,7 +165,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 
 
 
@@ -197,7 +197,7 @@
 
 	<profiles>
 
-		<profile>
+		<!-- <profile>
 			<id>arm</id>
 			<build>
 				<plugins>
@@ -209,10 +209,10 @@
 							<deploymentType>arm</deploymentType>
 							<username>mreddy-esb</username>
 							<password>Ritdumdig1</password>
-							<!-- <businessGroup>${anypoint.businessGroup}</businessGroup> -->
+							<businessGroup>${anypoint.businessGroup}</businessGroup>
 							<uri>${anypoint.uri}</uri>
 							<target>${arm.target.name}</target>
-							<!-- One of: server, serverGroup, cluster -->
+							One of: server, serverGroup, cluster
 							<targetType>${arm.target.type}</targetType>
 							<environment>${arm.environment}</environment>
 						</configuration>
@@ -228,7 +228,30 @@
 					</plugin>
 				</plugins>
 			</build>
-		</profile>
+		</profile> -->
+		
+		
+		<profile>
+            <id>Sandbox</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>env</name>
+                    <value>Sandbox</value>
+                </property>
+            </activation>
+            <properties>
+                <environment>Sandbox</environment>
+                <target>myLocalServer</target>
+                <targetType>server</targetType>
+            </properties>
+        </profile>
+		
+		
+		
+		
+		
+		
 	</profiles>
 
 
