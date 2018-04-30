@@ -157,7 +157,17 @@
 		</testResources>
 	</build>
 	
-	
+	<distributionManagement>
+        <repository>
+            <id>LocalReleases</id>
+            <!-- nexus -->
+            <url>http://localhost:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>LocalSnapshots</id>
+            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 	
 	
 	<profiles>
