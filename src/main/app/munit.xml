@@ -10,6 +10,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
     <flow name="munitFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/munit" doc:name="HTTP"/>
         <set-payload value="#['success']" doc:name="Set Payload"/>
-        <logger message="paylaod is #[payload]" level="INFO" doc:name="Logger"/>
+        <logger message="paylaod #[payload]" level="INFO" doc:name="Logger"/>
     </flow>
 </mule>
